@@ -1,44 +1,44 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Artplayer from 'artplayer';
+// import Artplayer from 'artplayer';
 import { DocRenderer } from "../..";
 
 const VideoRenderer: DocRenderer = ({ mainState: { currentDocument, language } }) => {
   useEffect(() => {
     const lang = language === 'zh' ? 'zh-cn' : language
-    var art = new Artplayer({
-      container: '#video-renderer',
-      url: currentDocument?.uri || '',
-      theme: '#377aff',
-      volume: 0.5,
-      isLive: false,
-      muted: false,
-      autoplay: false,
-      pip: true,
-      autoSize: true,
-      autoMini: true,
-      // screenshot: true,
-      setting: true,
-      loop: true,
-      flip: true,
-      playbackRate: true,
-      aspectRatio: true,
-      fullscreenWeb: true,
-      subtitleOffset: true,
-      miniProgressBar: true,
-      mutex: true,
-      backdrop: true,
-      playsInline: true,
-      autoPlayback: true,
-      airplay: true,
-      lang
-  });
-  art.on('click', (event) => {
-    console.info('click', event);
-});
-  art.on('screenshot', (dataUri) => {
-    art.screenshot();
-  });
+//     var art = new Artplayer({
+//       container: '#video-renderer',
+//       url: currentDocument?.uri || '',
+//       theme: '#377aff',
+//       volume: 0.5,
+//       isLive: false,
+//       muted: false,
+//       autoplay: false,
+//       pip: true,
+//       autoSize: true,
+//       autoMini: true,
+//       // screenshot: true,
+//       setting: true,
+//       loop: true,
+//       flip: true,
+//       playbackRate: true,
+//       aspectRatio: true,
+//       fullscreenWeb: true,
+//       subtitleOffset: true,
+//       miniProgressBar: true,
+//       mutex: true,
+//       backdrop: true,
+//       playsInline: true,
+//       autoPlayback: true,
+//       airplay: true,
+//       lang
+//   });
+//   art.on('click', (event) => {
+//     console.info('click', event);
+// });
+//   art.on('screenshot', (dataUri) => {
+//     art.screenshot();
+//   });
 
   }, [])
   if (!currentDocument) return null;

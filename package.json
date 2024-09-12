@@ -10,7 +10,6 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "dependencies": {
-    "artplayer": "^5.1.1",
     "babel-loader": "6.1.0",
     "pdfjs-dist": "2.4.456",
     "polaris-docx-preview": "0.3.2",
