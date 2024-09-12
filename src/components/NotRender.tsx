@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import { IStyledProps } from '../types';
 import { DocViewerContext } from '../state';
 import { FileIcon } from 'polaris-react-component';
-import { useTranslation } from 'react-i18next';
+
 
 const NotRender = () => {
   const { state } = useContext(DocViewerContext);
-  const { t } = useTranslation()
+ 
   const { currentDocument } = state;
   return (
     <Contanier>
@@ -16,13 +16,13 @@ const NotRender = () => {
         <div className="notFileIcon">
           <FileIcon {...(currentDocument as any)} />
         </div>
-        <div className="title">.{currentDocument?.suffix} {t('notPreview')}</div>
-        <div className="desc">{t('localDown')}</div>
+        <div className="title">.{currentDocument?.suffix} {('notPreview')}</div>
+        <div className="desc">{('localDown')}</div>
         <DownloadButton
           id="no-renderer-download"
           href={currentDocument?.uri}
           download={currentDocument?.uri}>
-          {t('downLoad')}
+          {('downLoad')}
         </DownloadButton>
       </Content>
     </Contanier>

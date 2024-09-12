@@ -6,14 +6,14 @@ import { setNumPages } from '../../state/actions';
 import { initialPDFState } from '../../state/reducer';
 import { PDFAllPages } from './PDFAllPages';
 import PDFSinglePage from './PDFSinglePage';
-import { useTranslation } from 'react-i18next';
+ 
 
 const PDFPages: FC<{}> = () => {
   const {
     state: { mainState, paginated },
     dispatch,
   } = useContext(PDFContext);
-  const { t } = useTranslation()
+ 
 
   const currentDocument = mainState?.currentDocument || null;
 
@@ -27,7 +27,7 @@ const PDFPages: FC<{}> = () => {
     <DocumentPDF
       file={currentDocument.fileData}
       onLoadSuccess={({ numPages }) => dispatch(setNumPages(numPages))}
-      loading={<span>{t('loading')}...</span>}>
+      loading={<span>{('loading')}...</span>}>
       {paginated ? <PDFSinglePage /> : <PDFAllPages />}
     </DocumentPDF>
   );

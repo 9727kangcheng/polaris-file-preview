@@ -3,13 +3,13 @@ import { ExitIcon } from './icons/exit';
 import styled from 'styled-components';
 import { IStyledProps } from '../types';
 import { DocViewerContext } from '../state';
-import { useTranslation } from 'react-i18next'
+ 
 
 const Exit = () => {
   const {
     state: { theme, onClose },
   } = useContext(DocViewerContext);
-  const { t } = useTranslation()
+ 
   return (
     <ExitButton
       onClick={() => {
@@ -17,7 +17,7 @@ const Exit = () => {
         // dispatch(init());
       }}>
       <ExitIcon color={theme?.icon_color} />
-      <Word>{t('exit')}</Word>
+      <Word>{('exit')}</Word>
       <Line />
     </ExitButton>
   );

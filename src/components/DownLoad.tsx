@@ -4,10 +4,10 @@ import { DownloadIcon } from './icons/downLoad';
 import { IStyledProps } from '../types';
 import { DocViewerContext } from '../state';
 import { FileSourceType } from 'polaris-react-component';
-import { useTranslation } from 'react-i18next';
+ 
 
 const DownLoad = () => {
-  const { t } = useTranslation();
+ 
   const { state } = useContext(DocViewerContext);
   const { currentDocument, theme } = state;
 
@@ -15,13 +15,13 @@ const DownLoad = () => {
     <DownButton>
       <Link href={currentDocument?.uri} download={currentDocument?.uri}>
         {FileSourceType.FS === currentDocument?.resourceType ? (
-          <>{t('enter')}</>
+          <>{('enter')}</>
         ) : (
           <>
             <Transform>
               <DownloadIcon color={theme?.text_primary} />
             </Transform>
-            {t('downLoad')}
+            {('downLoad')}
           </>
         )}
       </Link>

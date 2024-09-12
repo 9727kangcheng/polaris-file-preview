@@ -3,7 +3,7 @@ import { Page } from 'react-pdf';
 import styled from 'styled-components';
 import { IStyledProps } from '../../../../types';
 import { PDFContext } from '../../state';
-import { useTranslation } from 'react-i18next';
+ 
 
 interface Props {
   pageNum?: number;
@@ -28,7 +28,7 @@ const PDFSinglePage: FC<Props> = (props) => {
     <PageWrapper id="pdf-page-wrapper" last={_pageNum >= numPages}>
       {!paginated && (
         <PageTag id="pdf-page-info">
-          {t('page')} {_pageNum}/{numPages}
+          {('page')} {_pageNum}/{numPages}
         </PageTag>
       )}
       <Page

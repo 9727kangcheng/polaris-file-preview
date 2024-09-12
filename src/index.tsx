@@ -8,7 +8,6 @@ import { defaultTheme } from './theme';
 import { DocViewerProps } from './types';
 import { IStyledProps } from './types';
 import { DocViewerRenderers as pluginRenderers } from './plugins';
-import { i18n, I18nextProvider } from './i18n'
 // import { textDocuments } from './constants/index'
 // import ReactDOM from 'react-dom';
 // import PNG from './_example-files_/png.png';
@@ -23,20 +22,16 @@ const DocViewer: FC<DocViewerProps> = (props) => {
     );
   }
 
-  useEffect(() => {
-      i18n.changeLanguage(language ?? 'zh');
-  }, [language]);
+ 
 
   return (
     
       <AppProvider pluginRenderers={pluginRenderers} {...props} >
         <ThemeProvider theme={theme ? { ...defaultTheme, ...theme } : defaultTheme}>
-        <I18nextProvider i18n={i18n}>
           <Container id="react-doc-viewer" data-testid="react-doc-viewer" {...props}>
             <HeaderBar />
             <ProxyRenderer />
           </Container>
-          </I18nextProvider>
         </ThemeProvider>
       </AppProvider>
   );
