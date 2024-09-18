@@ -2,7 +2,6 @@ import React, { useContext, useMemo, FC, useRef, useEffect, useState } from 'rea
 import styled from 'styled-components';
 import { setFileNo } from '../../state/actions';
 import { DocViewerContext } from '../../state';
-import { FileIcon } from 'polaris-react-component'
 
 interface ItemProps {
   active: boolean;
@@ -48,7 +47,6 @@ export const FooterRender: FC<any> = () => {
               onClick={() => handleCurrentDocument(index)}
               key={index}
               active={currentFileNo === index}>
-              {FileIcon && <FileIcon {...doc} />}
             </Item>
           );
         })}

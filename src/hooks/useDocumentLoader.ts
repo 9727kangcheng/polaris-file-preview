@@ -5,7 +5,6 @@ import { IMainState } from '../state/reducer';
 import { DocRenderer } from '../types';
 import { defaultFileLoader, FileLoaderComplete } from '../utils/fileLoaders';
 import { useRendererSelector } from './useRendererSelector';
-import { FileSourceType, imgType } from 'polaris-react-component'
 
 export const useDocumentLoader = (): {
   state: IMainState;
@@ -37,17 +36,7 @@ export const useDocumentLoader = (): {
       const controller = new AbortController();
       const { signal } = controller;
      
-      
-      if (currentDocument.resourceType === FileSourceType.FS) {
-        handleUpdateCurrentDocument('link')
-        return;
-      }
-
-      if (currentDocument.suffix && imgType.includes(currentDocument.suffix)) {
-        handleUpdateCurrentDocument('png')
-        return;
-      }
-
+ 
       fetch(documentURI, { method: 'HEAD', signal }).then((response) => {
         const contentTypeRaw = response.headers.get('content-type');
         const contentTypes = contentTypeRaw?.split(';') || [];

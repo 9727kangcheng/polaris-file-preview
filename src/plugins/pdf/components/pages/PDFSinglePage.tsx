@@ -11,8 +11,7 @@ interface Props {
 
 const PDFSinglePage: FC<Props> = (props) => {
   const { pageNum } = props;
-
-  const { t } = useTranslation()
+ 
 
   const {
     state: { mainState, paginated, zoomLevel, numPages, currentPage },

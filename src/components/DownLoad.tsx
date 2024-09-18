@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { DownloadIcon } from './icons/downLoad';
 import { IStyledProps } from '../types';
 import { DocViewerContext } from '../state';
-import { FileSourceType } from 'polaris-react-component';
  
 
 const DownLoad = () => {
@@ -14,16 +13,12 @@ const DownLoad = () => {
   return (
     <DownButton>
       <Link href={currentDocument?.uri} download={currentDocument?.uri}>
-        {FileSourceType.FS === currentDocument?.resourceType ? (
-          <>{('enter')}</>
-        ) : (
-          <>
+      <>
             <Transform>
               <DownloadIcon color={theme?.text_primary} />
             </Transform>
             {('downLoad')}
           </>
-        )}
       </Link>
     </DownButton>
   );

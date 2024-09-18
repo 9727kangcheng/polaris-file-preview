@@ -3,7 +3,6 @@ import { LinkButton } from './common';
 import styled from 'styled-components';
 import { IStyledProps } from '../types';
 import { DocViewerContext } from '../state';
-import { FileIcon } from 'polaris-react-component';
 
 
 const NotRender = () => {
@@ -13,9 +12,6 @@ const NotRender = () => {
   return (
     <Contanier>
       <Content>
-        <div className="notFileIcon">
-          <FileIcon {...(currentDocument as any)} />
-        </div>
         <div className="title">.{currentDocument?.suffix} {('notPreview')}</div>
         <div className="desc">{('localDown')}</div>
         <DownloadButton
