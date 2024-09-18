@@ -1,4 +1,4 @@
-# polaris-doc-viewer
+# polaris-file-viewer
 
 <br />
 <br />
@@ -22,9 +22,9 @@
 | txt       | text/plain                                                                         | `✓`       |
 | xls       | application/vnd.ms-excel                                                           | `✓`       |
 | xlsx      | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet                  | `✓`       |
-| video     | mp3 、mp4、audio/x-m4a、 flac、 wma、 aiff、 ape、 dsd           | `✓`       |
-|
+| video     | mp3 、mp4、audio/x-m4a、 flac、 wma、 aiff、 ape、 dsd                             | `✓`       |
 
+|
 
 <br />
 <br />
@@ -34,32 +34,30 @@
 ### Core
 
 ```bash
- npm i polaris-doc-viewer
+ npm i polaris-file-viewer
  # or
- yarn add polaris-doc-viewer
+ yarn add polaris-file-viewer
   # or
- pnpm add polaris-doc-viewer
+ pnpm add polaris-file-viewer
 ```
-
 
 ## Usage
 
-> **Warning** - 默认情况下，组件高度将根据当前加载的文件展开和收缩。宽度将扩展以填充parent
-<br />
-<br />
+> **Warning** - 默认情况下，组件高度将根据当前加载的文件展开和收缩。宽度将扩展以填充 parent
+> <br /> > <br />
 
 ### Basic
 
-DocViewer至少需要一个文档对象数组才能起作用。
-每个文档对象必须有一个指向文件的uri，可以是返回文件的url，也可以是返回本地文件的url
+DocViewer 至少需要一个文档对象数组才能起作用。
+每个文档对象必须有一个指向文件的 uri，可以是返回文件的 url，也可以是返回本地文件的 url
 
 ```tsx
-import DocViewer from "polaris-doc-viewer";
+import DocViewer from 'polaris-file-viewer';
 
 function App() {
   const docs = [
-    { uri: "https://url-to-my-pdf.pdf", suffix: 'pdf' },
-    { uri: require("./example-files/pdf.pdf"), suffix: 'pdf'  }, // Local File
+    { uri: 'https://url-to-my-pdf.pdf', suffix: 'pdf' },
+    { uri: require('./example-files/pdf.pdf'), suffix: 'pdf' }, // Local File
   ];
 
   return <DocViewer documents={docs} />;
@@ -71,7 +69,7 @@ function App() {
 `DocViewerRenderers` 插入所有渲染器的数组
 
 ```tsx
-import DocViewer, { DocViewerRenderers } from "polaris-doc-viewer";
+import DocViewer, { DocViewerRenderers } from "polaris-file-viewer";
 
 <DocViewer
   pluginRenderers={DocViewerRenderers}
@@ -82,7 +80,7 @@ import DocViewer, { DocViewerRenderers } from "polaris-doc-viewer";
 或者插入单个渲染器
 
 ```tsx
-import DocViewer, { PDFRenderer, PNGRenderer } from "polaris-doc-viewer";
+import DocViewer, { PDFRenderer, PNGRenderer } from "polaris-file-viewer";
 
 <DocViewer
   pluginRenderers={[PDFRenderer, PNGRenderer]}
@@ -98,12 +96,10 @@ import DocViewer, { PDFRenderer, PNGRenderer } from "polaris-doc-viewer";
 要创建一个自定义渲染器，它将只存在于您的项目中。
 
 ```tsx
-import React from "react";
-import DocViewer from "polaris-doc-viewer";
+import React from 'react';
+import DocViewer from 'polaris-file-viewer';
 
-const MyCustomPNGRenderer: DocRenderer = ({
-  mainState: { currentDocument },
-}) => {
+const MyCustomPNGRenderer: DocRenderer = ({ mainState: { currentDocument } }) => {
   if (!currentDocument) return null;
 
   return (
@@ -113,13 +109,13 @@ const MyCustomPNGRenderer: DocRenderer = ({
   );
 };
 
-MyCustomPNGRenderer.fileTypes = ["png", "image/png"];
+MyCustomPNGRenderer.fileTypes = ['png', 'image/png'];
 ```
 
-并将渲染器放入  pluginRenderers 里面 `Array`.
+并将渲染器放入 pluginRenderers 里面 `Array`.
 
 ```tsx
-import DocViewer, { DocViewerRenderers } from "polaris-doc-viewer";
+import DocViewer, { DocViewerRenderers } from 'polaris-file-viewer';
 
 <DocViewer
   pluginRenderers={[MyCustomPNGRenderer]}
@@ -136,15 +132,11 @@ import DocViewer, { DocViewerRenderers } from "polaris-doc-viewer";
 
 ### Custom File Loader
 
-如果您需要阻止 `polaris-doc-viewer` 实际加载文件。
-你可以用一个回调来装饰你的自定义渲染器。你自己在iFrame中加载文件。
+如果您需要阻止 `polaris-file-viewer` 实际加载文件。
+你可以用一个回调来装饰你的自定义渲染器。你自己在 iFrame 中加载文件。
 
 ```tsx
-MyCustomPNGRenderer.fileLoader = ({
-  documentURI,
-  signal,
-  fileLoaderComplete,
-}) => {
+MyCustomPNGRenderer.fileLoader = ({ documentURI, signal, fileLoaderComplete }) => {
   myCustomFileLoaderCode().then(() => {
     // Whenever you have finished you must call fileLoaderComplete() to remove the loading animation
     fileLoaderComplete();
@@ -174,7 +166,6 @@ MyCustomPNGRenderer.fileLoader = ({
 />
 ```
 
-
 #### - CSS Class Default Override
 
 Each component / div already has a DOM id that can be used to style any part of the document viewer.
@@ -194,7 +185,7 @@ Each component / div already has a DOM id that can be used to style any part of 
 #### - StyledComponent
 
 ```tsx
-import styled from "styled-components";
+import styled from 'styled-components';
 //...
 <MyDocViewer documents={docs} />;
 //...
@@ -228,15 +219,15 @@ const MyDocViewer = styled(DocViewer)`
 
 > e.g. `src/plugins/jpg`
 
-在这个文件夹中，创建一个Renderer React Typescript文件
+在这个文件夹中，创建一个 Renderer React Typescript 文件
 
 > e.g. `index.tsx`
 
-**Step 2** - 在JPGRenderer中，导出类型为 `DocRenderer`
+**Step 2** - 在 JPGRenderer 中，导出类型为 `DocRenderer`
 
 ```tsx
-import React from "react";
-import { DocRenderer } from "../../types";
+import React from 'react';
+import { DocRenderer } from '../../types';
 
 // Be sure that Renderer correctly uses type DocRenderer
 const JPGRenderer: DocRenderer = ({ mainState: { currentDocument } }) => {
@@ -252,7 +243,7 @@ const JPGRenderer: DocRenderer = ({ mainState: { currentDocument } }) => {
 export default JPGRenderer;
 
 // List the MIME types that this renderer will respond to
-JPGRenderer.fileTypes = ["jpg", "jpeg", "image/jpg", "image/jpeg"];
+JPGRenderer.fileTypes = ['jpg', 'jpeg', 'image/jpg', 'image/jpeg'];
 
 //如果同一个MIME类型有多个渲染器，使用weight。越高越好。
 //包含的渲染器的权重为0
@@ -261,13 +252,12 @@ JPGRenderer.weight = 1;
 
 <br />
 
-
 <br />
 <br />
 
 ## Overriding Header Component
 
-你可以给config.header传递一个回调函数。overricomponent '返回一个React元素。函数的参数将被填充并可用，这个函数也将在mainState更新时被重新调用。
+你可以给 config.header 传递一个回调函数。overricomponent '返回一个 React 元素。函数的参数将被填充并可用，这个函数也将在 mainState 更新时被重新调用。
 参数包括来自主组件的状态对象，以及' previousDocument '和' nextDocument '的文档导航函数。
 
 Example:
@@ -336,7 +326,7 @@ const myHeader: IHeaderOverride = (state, previousDocument, nextDocument) => {
 ### `IDocument`
 
 | name      | type     |
-| --------- | -------- |
+| --------- | -------- | ----------------------------------------------------------------- |
 | uri       | `string` |
 | fileType? | `string` |
 | fileData? | `string  | ArrayBuffer` - **Used Internally - Ignored if passed into props** |
@@ -365,7 +355,7 @@ const myHeader: IHeaderOverride = (state, previousDocument, nextDocument) => {
 ### `IHeaderOverride` () => `ReactElement<any, any> | null`
 
 | name             | type                        |
-| ---------------- | --------------------------- |
+| ---------------- | --------------------------- | ----- |
 | state            | [`IMainState`](#imainstate) |
 | previousDocument | `() => void`                |
 | nextDocument     | `() => void`                |
@@ -390,7 +380,7 @@ const myHeader: IHeaderOverride = (state, previousDocument, nextDocument) => {
 ### `DocRenderer` extends React.FC\<[`DocRendererProps`](#docrendererprops)\>
 
 | name        | type                                          |
-| ----------- | --------------------------------------------- |
+| ----------- | --------------------------------------------- | ---- | ---------- |
 | fileTypes   | `string[]`                                    |
 | weight      | `number`                                      |
 | fileLoader? | [`FileLoaderFunction`](#fileloaderfunction) ` | null | undefined` |
