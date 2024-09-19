@@ -1,6 +1,6 @@
 {
   "name": "polaris-file-viewer",
-  "version": "0.5.30",
+  "version": "0.5.40",
   "description": "Document viewer for react. Renders online/local documents.",
   "author": "luchang",
   "files": [
